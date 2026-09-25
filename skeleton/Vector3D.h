@@ -19,11 +19,12 @@ public:
 	float dot(const Vector3D& v) const;
 	Vector3D cross(const Vector3D& v) const;
 
-	float operator=(Vector3D other)
+	void operator=(Vector3D other)
 	{
 		x = other.x;
 		y = other.y;
 		z = other.z;
+
 	}
 	Vector3D operator +(Vector3D other)
 	{
