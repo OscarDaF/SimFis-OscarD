@@ -14,11 +14,6 @@ public:
         physx::PxShape* shape = CreateShape(physx::PxSphereGeometry(2.0f));
         m_transform = physx::PxTransform(physx::PxVec3(0.0f, 0.0f, 0.0f));
 
-
-        physx::PxShape* redShpere = CreateShape(physx::PxSphereGeometry(2.0f));
-        physx::PxShape* blueSphere = CreateShape(physx::PxSphereGeometry(2.0f));
-        physx::PxShape* greenSphere = CreateShape(physx::PxSphereGeometry(2.0f));
-
         Vector3D X(3.0f, 1.0f, 0.0f);
         Vector3D Y(0.0f, 4.0f, 0.0f);
 
@@ -26,14 +21,14 @@ public:
         W = X.cross(Y);
         
         m_RedTransform = physx::PxTransform((X.normalize())* 5.0f);
-        m_BlueTransform = physx::PxTransform((Y.normalize())* 5.0f);
-        m_GreenTransform = physx::PxTransform((W.normalize())* 5.0f);
+        m_GreenTransform = physx::PxTransform((Y.normalize())* 5.0f);
+        m_BlueTransform = physx::PxTransform((W.normalize())* 5.0f);
 
         // Se registra el RenderItem exactamente como en la plantilla original
         m_renderItem = new RenderItem(shape, &m_transform, Vector4(0.0f, 1.0f, 0.0f, 0.3f));
-        m_renderItem = new RenderItem(redShpere, &m_RedTransform, Vector4(1.0f, 0.0f, 0.0f, 1.0f));
-        m_renderItem = new RenderItem(blueSphere, &m_BlueTransform, Vector4(0.0f, 0.0f, 1.0f, 1.0f));
-        m_renderItem = new RenderItem(greenSphere, &m_GreenTransform, Vector4(0.0f, 1.0f, 0.0f, 1.0f));
+        m_renderItem = new RenderItem(shape, &m_RedTransform, Vector4(1.0f, 0.0f, 0.0f, 1.0f));
+        m_renderItem = new RenderItem(shape, &m_GreenTransform, Vector4(0.0f, 1.0f, 0.0f, 1.0f));
+        m_renderItem = new RenderItem(shape, &m_BlueTransform, Vector4(0.0f, 0.0f, 1.0f, 1.0f));
     }
 
     void update(double dt) override {
