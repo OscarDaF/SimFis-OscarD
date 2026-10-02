@@ -8,6 +8,7 @@ class Particle
 private:
 
 	Vector3 vel;
+	Vector3 ac;
 	physx::PxTransform pose;
 	RenderItem* renderItem;
 

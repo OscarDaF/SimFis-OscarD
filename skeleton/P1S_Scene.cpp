@@ -9,7 +9,7 @@ void P1S_Scene::init()
     //// Se registra el RenderItem exactamente como en la plantilla original
     //m_renderItem = new RenderItem(shape, &m_transform, Vector4(1.0f, 0.0f, 0.0f, 1.0f));
 
-    part = new Particle({1.0f,1.0f,1.0f} , {15.0f,.0f,.0f});
+    part = new Particle({1.0f,1.0f,1.0f} , {2.0f,.0f,.0f});
     
 }
 
