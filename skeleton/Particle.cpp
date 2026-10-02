@@ -2,8 +2,8 @@
 
 Particle::Particle(Vector3 Pos, Vector3 vel) : vel(vel)
 {
-	pose.p = Pos;
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(1.0f)) , Vector4(.0f , 1.0f , .0f , 1.0f));
+	pose = physx::PxTransform(Pos);
+	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(1.0f)) , &pose, Vector4(.0f , 1.0f , .0f , 1.0f));
 }
 
 Particle::~Particle()
