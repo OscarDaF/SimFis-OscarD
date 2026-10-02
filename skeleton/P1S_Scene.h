@@ -16,7 +16,8 @@ public:
 
     void keyPress(unsigned char key, const physx::PxTransform& camera) override {
         if (key == 'r' || key == 'R') {
-            m_transform.p = physx::PxVec3(0.0f, 10.0f, 0.0f); // Reset
+            
+            //m_transform.p = physx::PxVec3(0.0f, 10.0f, 0.0f); // Reset
         }
     }
 
@@ -36,5 +37,6 @@ private:
     physx::PxTransform m_transform;
     RenderItem* m_renderItem{ nullptr };
     Particle* part;
+    
 };
 
