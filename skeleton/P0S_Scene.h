@@ -11,24 +11,33 @@ public:
 
     void init() override {
         // Ejemplo: Creación de una esfera usando las utilidades de render existentes
-        physx::PxShape* shape = CreateShape(physx::PxSphereGeometry(2.0f));
+        physx::PxShape* shape = CreateShape(physx::PxSphereGeometry(1.0f));
         m_transform = physx::PxTransform(physx::PxVec3(0.0f, 0.0f, 0.0f));
 
-        Vector3D X(3.0f, 1.0f, 0.0f);
-        Vector3D Y(0.0f, 4.0f, 0.0f);
+        Vector3D D(0.0f, 0.0f, 1.0f);
 
-        Vector3D W;
-        W = X.cross(Y);
-        
-        m_RedTransform = physx::PxTransform((X.normalize())* 5.0f);
-        m_GreenTransform = physx::PxTransform((Y.normalize())* 5.0f);
-        m_BlueTransform = physx::PxTransform((W.normalize())* 5.0f);
+        Vector3D P_1(2.0f, 0.0f, 3.0f);
+        Vector3D P_2(-4.0f, 0.0f, 1.0f);
+        Vector3D P_3(2.0f, 0.0f, 5.0f);
+        Vector3D P_4(3.0f, 0.0f, 0.0f);
 
-        // Se registra el RenderItem exactamente como en la plantilla original
-        m_renderItem = new RenderItem(shape, &m_transform, Vector4(0.0f, 1.0f, 0.0f, 0.3f));
-        m_renderItem = new RenderItem(shape, &m_RedTransform, Vector4(1.0f, 0.0f, 0.0f, 1.0f));
-        m_renderItem = new RenderItem(shape, &m_GreenTransform, Vector4(0.0f, 1.0f, 0.0f, 1.0f));
-        m_renderItem = new RenderItem(shape, &m_BlueTransform, Vector4(0.0f, 0.0f, 1.0f, 1.0f));
+        m_SP1 = physx::PxTransform(P_1);
+        m_SP2 = physx::PxTransform(P_2);
+        m_SP3 = physx::PxTransform(P_3);
+        m_SP4 = physx::PxTransform(P_4);
+
+        float a1 = (acos((D.dot(P_1)) / (D.magnitude() * P_1.magnitude()))) * (180.0 / 3.14f);
+        float a2 = (acos((D.dot(P_2)) / (D.magnitude() * P_2.magnitude()))) * (180.0 / 3.14f);
+        float a3 = (acos((D.dot(P_3)) / (D.magnitude() * P_3.magnitude()))) * (180.0 / 3.14f);
+        float a4 = (acos((D.dot(P_4)) / (D.magnitude() * P_4.magnitude()))) * (180.0 / 3.14f);
+
+        std::cout << a1 << " " << a2 << " " << a3 << " " << a4 << std::endl;
+
+        m_renderItem = new RenderItem(shape , &m_SP1 , physx::PxVec4(0.0f,0.0f,1.0f,1.0f));
+        m_renderItem = new RenderItem(shape , &m_SP2 , physx::PxVec4(0.0f,0.0f,1.0f,1.0f));
+        m_renderItem = new RenderItem(shape , &m_SP3 , physx::PxVec4(0.0f,0.0f,1.0f,1.0f));
+        m_renderItem = new RenderItem(shape , &m_SP4 , physx::PxVec4(0.0f,0.0f,1.0f,1.0f));
+
     }
 
     void update(double dt) override {
@@ -51,9 +60,10 @@ public:
 
 private:
     physx::PxTransform m_transform;
-    physx::PxTransform m_RedTransform;
-    physx::PxTransform m_BlueTransform;
-    physx::PxTransform m_GreenTransform;
+    physx::PxTransform m_SP1;
+    physx::PxTransform m_SP2;
+    physx::PxTransform m_SP3;
+    physx::PxTransform m_SP4;
     
     RenderItem* m_renderItem{ nullptr };
 };
