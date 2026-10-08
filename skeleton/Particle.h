@@ -12,8 +12,8 @@ protected:
 	float damping;
 	physx::PxTransform pose;
 
-	float m;
-	Vector3 g;
+	float _mReal;
+	Vector3 _g;
 
 	bool initialCalc;
 	physx::PxTransform lastPoseVerlet;
