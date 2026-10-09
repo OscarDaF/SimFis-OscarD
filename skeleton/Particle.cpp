@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-Particle::Particle(Vector3 Pos, Vector3 ve , float m, Vector3 g) : vel(vel) , initialCalc(true) , m(m) , g(g)
+Particle::Particle(Vector3 Pos, Vector3 vel) : vel(vel) , initialCalc(true)
 {
 	pose = physx::PxTransform(Pos);
 	ac = { 3.0f,.0f,.0f };
@@ -43,7 +43,6 @@ void Particle::integrateVerlet(double t)
 	else
 	{
 		physx::PxTransform previousP = pose;
-		ac += g;
 		pose.p = 2 * previousP.p - lastPoseVerlet.p + (ac * (t * t));
 		lastPoseVerlet = previousP;
 	}

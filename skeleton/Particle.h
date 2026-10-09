@@ -5,15 +5,12 @@
 
 class Particle
 {
-protected:
+private:
 
 	Vector3 vel;
 	Vector3 ac;
 	float damping;
 	physx::PxTransform pose;
-
-	float m;
-	Vector3 g;
 
 	bool initialCalc;
 	physx::PxTransform lastPoseVerlet;
@@ -22,7 +19,7 @@ protected:
 
 public:
 
-	Particle(Vector3 Pos , Vector3 vel , float m , Vector3 g);
+	Particle(Vector3 Pos , Vector3 vel);
 	~Particle();
 
 	void integrateEuler(double t);
