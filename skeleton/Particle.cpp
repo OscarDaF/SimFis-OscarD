@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-Particle::Particle(Vector3 Pos, Vector3 vel) : vel(vel) , initialCalc(true)
+Particle::Particle(Vector3 Pos, Vector3 vel , Vector3 grav) : vel(vel) , initialCalc(true) , _gravedad(grav)
 {
 	pose = physx::PxTransform(Pos);
 	ac = { 3.0f,.0f,.0f };

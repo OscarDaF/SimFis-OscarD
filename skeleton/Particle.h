@@ -9,6 +9,7 @@ private:
 
 	Vector3 vel;
 	Vector3 ac;
+	Vector3 _gravedad;
 	float damping;
 	physx::PxTransform pose;
 
@@ -19,7 +20,7 @@ private:
 
 public:
 
-	Particle(Vector3 Pos , Vector3 vel);
+	Particle(Vector3 Pos , Vector3 vel , Vector3 grav);
 	~Particle();
 
 	void integrateEuler(double t);
