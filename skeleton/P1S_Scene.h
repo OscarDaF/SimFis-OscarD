@@ -20,6 +20,13 @@ public:
             
             //m_transform.p = physx::PxVec3(0.0f, 10.0f, 0.0f); // Reset
         }
+        else if (key == ' ')
+        {
+            Vector3 camPos = GetCamera()->getTransform().p;
+            Vector3 camDir = GetCamera()->getDir().getNormalized();
+            float vel = 200;
+            vProy.push_back(new Proyectil(camPos, camDir * vel, 10, { .0f , -9.8f , 0.0f }));
+        }
     }
 
     void cleanup() override {
@@ -28,17 +35,18 @@ public:
             m_renderItem = nullptr;
         }
 
-        if (part)
+        for (auto& p : vProy)
         {
-            delete part;
+            delete p;
+            p = nullptr;
         }
+
     }
 
 private:
     physx::PxTransform m_transform;
     RenderItem* m_renderItem{ nullptr };
-    Particle* part;
-    Proyectil* proy;
     
+    std::vector<Proyectil*> vProy;
 };
 

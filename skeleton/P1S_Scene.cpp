@@ -10,7 +10,7 @@ void P1S_Scene::init()
     //m_renderItem = new RenderItem(shape, &m_transform, Vector4(1.0f, 0.0f, 0.0f, 1.0f));
 
     //part = new Particle({1.0f,1.0f,1.0f} , {5.0f,.0f,.0f} , {.0f , -9.8f , 0.0f});
-    proy = new Proyectil({1.0f , 40.0f , 1.0f} , {180.0f , .0f , .0f} , 10 , { .0f , -9.8f , 0.0f });
+    
     
 }
 
@@ -18,7 +18,8 @@ void P1S_Scene::update(double dt)
 {
     // Lógica/Integración del alumno (por ejemplo, movimiento simple)
     //m_transform.p.y -= static_cast<float>(9.8 * dt);
-
-    proy->integrateVerlet(dt);
-
+    for (auto& p : vProy)
+    {
+        p->integrateVerlet(dt);
+    }
 }
