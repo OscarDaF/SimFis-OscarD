@@ -5,6 +5,7 @@
 #include <vector>
 #include "Vector3D.h"
 #include "Particle.h"
+#include "Proyectil.h"
 
 class P1S_Scene : public Scene {
 public:
@@ -37,6 +38,7 @@ private:
     physx::PxTransform m_transform;
     RenderItem* m_renderItem{ nullptr };
     Particle* part;
+    Proyectil* proy;
     
 };
 

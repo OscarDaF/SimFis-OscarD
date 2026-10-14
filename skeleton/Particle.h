@@ -5,13 +5,14 @@
 
 class Particle
 {
-private:
+protected:
 
-	Vector3 vel;
-	Vector3 ac;
+	Vector3 _vel;
+	Vector3 _ac;
 	Vector3 _gravedad;
+	float _m;
 	float damping;
-	physx::PxTransform pose;
+	physx::PxTransform _pose;
 
 	bool initialCalc;
 	physx::PxTransform lastPoseVerlet;
@@ -19,7 +20,7 @@ private:
 	RenderItem* renderItem;
 
 public:
-
+	Particle();
 	Particle(Vector3 Pos , Vector3 vel , Vector3 grav);
 	~Particle();
 
