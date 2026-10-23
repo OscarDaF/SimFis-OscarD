@@ -8,7 +8,7 @@ Particle::Particle() : _pose({0,0,0}) , _vel({0,0,0}) , initialCalc(true) , _gra
 
 }
 
-Particle::Particle(Vector3 Pos, Vector3 vel , Vector3 grav) : _vel(vel) , initialCalc(true) , _gravedad(grav)
+Particle::Particle(Vector3 Pos, Vector3 vel , Vector3 grav , float tVida = 10.0f) : _vel(vel) , initialCalc(true) , _gravedad(grav)
 {
 	_pose = physx::PxTransform(Pos);
 	_ac = { 3.0f,.0f,.0f };

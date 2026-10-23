@@ -12,8 +12,13 @@ protected:
 	Vector3 _gravedad;
 	float _m;
 	float damping;
-	physx::PxTransform _pose;
+	float _tVida;
 
+	physx::PxTransform _pose;
+	
+	Vector3 _color;
+	
+	//Control de verlet
 	bool initialCalc;
 	physx::PxTransform lastPoseVerlet;
 	
@@ -21,12 +26,16 @@ protected:
 
 public:
 	Particle();
-	Particle(Vector3 Pos , Vector3 vel , Vector3 grav);
+	Particle(Vector3 Pos , Vector3 vel , Vector3 grav , float tVida = 10.0f);
 	~Particle();
 
+	//MÉTODOS DE INTEGRACIÓN
 	void integrateEuler(double t);
 	void integrateSemiImplicitEuler(double t);
 	void integrateVerlet(double t);
 	
+	//
+	float getTiempoDeVida() { return _tVida; }
+
 };
 
