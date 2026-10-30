@@ -1,5 +1,14 @@
 #include "Emisor.h"
 
+Particle* Emisor::generarParticula()
+{
+	//Variables a randomizar
+	Vector3 npDir = _dirEmisión;
+	float npVel = _vel;
+
+	return (nullptr);
+}
+
 void Emisor::distUniforme()
 {
 	std::mt19937 gen (rd());

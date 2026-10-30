@@ -5,6 +5,7 @@
 #include "Particle.h"
 class Emisor
 {
+
 private:
 
 	std::random_device rd;
@@ -16,7 +17,10 @@ private:
 	float _vel;
 public:
 	Emisor();
-	Emisor(Vector3D pos , Vector3D dir, float tas, float v);
+	Emisor(Vector3D pos, Vector3D dir, float tas, float v) :
+		_pos(pos), _dirEmisión(dir.normalize()), _tasaGeneracion(tas), _vel(v)
+	{
+	};
 	
 	bool canGenerate()
 	{
@@ -33,6 +37,5 @@ public:
 	void distGaussiana();
 
 
-	void update(float dt);
 };
 

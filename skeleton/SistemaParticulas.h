@@ -17,6 +17,8 @@ public:
 	SistemaParticulas();
 	SistemaParticulas(Vector3 pos);
 
+	void addEmissor();
+
 	void update(float dt);
 	
 };

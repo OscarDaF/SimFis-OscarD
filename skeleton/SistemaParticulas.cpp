@@ -4,10 +4,10 @@ void SistemaParticulas::update(float dt)
 {
 	for (auto& e : _emisores)
 	{
-		e.update(dt);
+		_particulas.push_back(e.generarParticula());
 	}
-	for (auto p : _particulas)
+	for (auto& p : _particulas)
 	{
-
+		p->integrateVerlet(dt);
 	}
 }

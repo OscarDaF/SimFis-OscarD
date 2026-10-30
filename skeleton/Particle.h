@@ -34,7 +34,7 @@ public:
 	void integrateSemiImplicitEuler(double t);
 	void integrateVerlet(double t);
 	
-	//
+	// 
 	float getTiempoDeVida() { return _tVida; }
 
 };
