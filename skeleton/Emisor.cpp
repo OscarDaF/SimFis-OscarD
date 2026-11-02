@@ -3,10 +3,11 @@
 Particle* Emisor::generarParticula()
 {
 	//Variables a randomizar
-	Vector3D randomDir = generateRandomDirectionVector();
+	Vector3D randomPos = generateRandomPositionInRadius(_emCono._rOrigen);
+	Vector3D randomDir = generateRandomDirectionVector(randomPos);
 
-	Vector3D g(0, -3.0, 0);
-	Particle* p = new Particle(_pos, randomDir * _vel , g, 1.0f);
+	Vector3D g(0, -0.0, 0);
+	Particle* p = new Particle(randomPos, randomDir * _vel , g, 1.0f);
 	return (p);
 }
 
@@ -26,10 +27,10 @@ void Emisor::setTargetConeHeight(float h)
 	_emCono._hObjetivo = h;
 }
 
-Vector3D Emisor::generateRandomDirectionVector()
+Vector3D Emisor::generateRandomDirectionVector(Vector3D position)
 {
 
-	Vector3D randomOriginPos = generateRandomPositionInRadius(_emCono._rOrigen);
+	Vector3D randomOriginPos = position;
 	Vector3D randomObjetivoPos = generateRandomPositionInRadius(_emCono._rObjetivo) + Vector3D(0,_emCono._hObjetivo , 0);
 
 	return (randomObjetivoPos - randomOriginPos).normalize();

@@ -38,9 +38,6 @@ public:
 	Emisor(Vector3D pos, Vector3D dir, float tas, float v , Distribution dist = Distribution::UNIFORME) :
 		_pos(pos), _dirEmisión(dir.normalize()), _tasaGeneracion(tas), _vel(v) , _emDistribucion(dist)
 	{
-		_emCono._rOrigen = .0f;
-		_emCono._rObjetivo = 1.0f;
-		_emCono._hObjetivo = 1.0f;
 	};
 	
 	void update(float dt);
@@ -62,7 +59,7 @@ public:
 	void setTargetConeHeight(float h);
 
 
-	Vector3D generateRandomDirectionVector();
+	Vector3D generateRandomDirectionVector(Vector3D position);
 	Vector3D generateRandomPositionInRadius(float r);
 
 	float randomDistribution(float limInf , float limSup);
