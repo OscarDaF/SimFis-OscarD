@@ -3,6 +3,8 @@
 #include "Vector3D.h"
 #include <random>
 #include "Particle.h"
+#include <iostream>
+
 class Emisor
 {
 
@@ -35,8 +37,8 @@ public:
 	}
 	Particle* generarParticula();
 
-	void distUniforme();
-	void distGaussiana();
+	float distUniforme();
+	float distGaussiana();
 
 
 };

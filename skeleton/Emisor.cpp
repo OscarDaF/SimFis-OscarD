@@ -3,23 +3,27 @@
 Particle* Emisor::generarParticula()
 {
 	//Variables a randomizar
-	Vector3D npDir = _dirEmisión * _vel;
-	Vector3D a(0, -4.0, 0);
-
+	//Vector3D randomOffset(distUniforme(), distUniforme(), distUniforme());
+	Vector3D randomOffset(distGaussiana(), distGaussiana(), distGaussiana());
+	Vector3D npDir = (_dirEmisión + randomOffset).normalize() * _vel;
+	Vector3D a(0, -5.0, 0);
 	Particle* p = new Particle(_pos, npDir, a, 10);
 	return (p);
 }
 
-void Emisor::distUniforme()
+float Emisor::distUniforme()
 {
 	std::mt19937 gen (rd());
-	std::uniform_int_distribution<> dist(1,6); //LIMITES
+	std::uniform_real_distribution<double> dist(-0.5f,0.5f); //LIMITES
+
+	return(dist(gen));
 }
 
-void Emisor::distGaussiana()
+float Emisor::distGaussiana()
 {
 	std::mt19937 gen(rd());
-	std::normal_distribution<> dist(); //MEDIANA , DESVIACIÓN TÍPICA
+	std::normal_distribution<float> dist(0.0f , 1.0f); //MEDIANA , DESVIACIÓN TÍPICA
+	return dist(gen);
 }
 
 void Emisor::update(float dt)

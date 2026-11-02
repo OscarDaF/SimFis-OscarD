@@ -1,5 +1,4 @@
 #include "SistemaParticulas.h"
-#include <iostream>
 
 SistemaParticulas::SistemaParticulas()
 {
@@ -7,7 +6,7 @@ SistemaParticulas::SistemaParticulas()
 
 SistemaParticulas::SistemaParticulas(Vector3 pos, Vector3D dir)
 {
-	Emisor emisorBase(pos, dir, .25f, 100);
+	Emisor emisorBase(pos, dir, .02f, 60);
 	_emisores.push_back(emisorBase);
 }
 
