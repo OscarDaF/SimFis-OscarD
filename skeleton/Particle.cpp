@@ -20,7 +20,8 @@ Particle::~Particle()
 {
 	if (renderItem != nullptr)
 	{
-		delete renderItem;
+		renderItem->release();
+		renderItem = nullptr;
 	}
 }
 
@@ -57,5 +58,9 @@ void Particle::integrateVerlet(double t)
 		_pose.p = 2 * previousP.p - lastPoseVerlet.p + (_ac * (t * t));
 		lastPoseVerlet = previousP;
 	}
+}
 
+void Particle::update(float dt)
+{
+	_tVida -= dt;
 }

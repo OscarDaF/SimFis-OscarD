@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <unordered_map>
 
 #include "Vector3D.h"
 #include "Particle.h"
@@ -11,6 +12,7 @@ class SistemaParticulas
 private:
 	Vector3D pos;
 	std::vector<Particle*> _particulas;
+	
 	std::vector<Emisor> _emisores;
 public:
 

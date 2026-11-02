@@ -6,7 +6,7 @@ SistemaParticulas::SistemaParticulas()
 
 SistemaParticulas::SistemaParticulas(Vector3 pos, Vector3D dir)
 {
-	Emisor emisorBase(pos, dir, .02f, 60);
+	Emisor emisorBase(pos, dir, .02f, 70);
 	_emisores.push_back(emisorBase);
 }
 
@@ -29,13 +29,21 @@ void SistemaParticulas::update(float dt)
 		e.update(dt);
 		if (e.canGenerate())
 		{
-			std::cout << "Generando" << std:: endl;
+			//std::cout << "Generando" << std:: endl;
 			_particulas.push_back(e.generarParticula());
 		}
 	}
 	for (auto& p : _particulas)
 	{
-		if(p)
+		if (p)
+		{
+			p->update(dt);
 			p->integrateVerlet(dt);
+			if (p->getTiempoDeVida() <= 0)
+			{
+				delete p;
+				p = nullptr;
+			}
+		}
 	}
 }

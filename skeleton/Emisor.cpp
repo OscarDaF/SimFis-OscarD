@@ -3,11 +3,11 @@
 Particle* Emisor::generarParticula()
 {
 	//Variables a randomizar
-	//Vector3D randomOffset(distUniforme(), distUniforme(), distUniforme());
-	Vector3D randomOffset(distGaussiana(), distGaussiana(), distGaussiana());
+	Vector3D randomOffset(distUniforme(), distUniforme(), distUniforme());
+	//Vector3D randomOffset(distGaussiana(), distGaussiana(), distGaussiana());
 	Vector3D npDir = (_dirEmisión + randomOffset).normalize() * _vel;
-	Vector3D a(0, -5.0, 0);
-	Particle* p = new Particle(_pos, npDir, a, 10);
+	Vector3D a(0, -3.0, 0);
+	Particle* p = new Particle(_pos, npDir, a, 1.0f);
 	return (p);
 }
 
