@@ -8,7 +8,7 @@ Particle::Particle() : _pose({0,0,0}) , _vel({0,0,0}) , initialCalc(true) , _gra
 
 }
 
-Particle::Particle(Vector3 Pos, Vector3 vel , Vector3 grav , float tVida = 10.0f) : _vel(vel) , initialCalc(true) , _gravedad(grav)
+Particle::Particle(Vector3D Pos, Vector3D vel , Vector3D grav , float tVida) : _vel(vel) , initialCalc(true) , _gravedad(grav) , _tVida(tVida)
 {
 	_pose = physx::PxTransform(Pos);
 	_ac = { 3.0f,.0f,.0f };
@@ -28,9 +28,9 @@ void Particle::integrateEuler(double t)
 {
 	_ac += _gravedad;
 	physx::PxTransform previousP = _pose;
-	_pose.p = previousP.p + (t * _vel);
+	_pose.p = previousP.p + (_vel * t);
 	Vector3 previousV = _vel;
-	_vel = previousV + (t * _ac);
+	_vel = previousV + (_ac * t);
 	_vel = _vel * pow(damping, t);
 	
 }
@@ -38,9 +38,9 @@ void Particle::integrateEuler(double t)
 void Particle::integrateSemiImplicitEuler(double t)
 {
 	_ac += _gravedad;
-	_vel = _vel + (t*_ac);
+	_vel = _vel + (_ac*t);
 	_vel = _vel * pow(damping , t);
-	_pose.p = _pose.p + (t * _vel);
+	_pose.p = _pose.p + (_vel * t);
 }
 
 void Particle::integrateVerlet(double t)

@@ -6,6 +6,7 @@
 #include "Vector3D.h"
 #include "Particle.h"
 #include "Proyectil.h"
+#include "SistemaParticulas.h"
 
 class P2S_Scene : public Scene {
 public:
@@ -23,14 +24,11 @@ public:
     }
 
     void cleanup() override {
-        if (m_renderItem) {
-            m_renderItem->release(); // Deregistra y destruye el item
-            m_renderItem = nullptr;
-        }
+
     }
 
 private:
     physx::PxTransform m_transform;
-    RenderItem* m_renderItem{ nullptr };
+    SistemaParticulas* sistema;
 };
 

@@ -3,9 +3,10 @@
 Particle* Emisor::generarParticula()
 {
 	//Variables a randomizar
-	Vector3 npDir = _dirEmisión;
-	float npVel = _vel;
+	Vector3D npDir = _dirEmisión * _vel;
+	Vector3D a(0, 0, 0);
 
+	Particle* p = new Particle(_pos, npDir, a, 10);
 	return (nullptr);
 }
 
@@ -19,4 +20,9 @@ void Emisor::distGaussiana()
 {
 	std::mt19937 gen(rd());
 	std::normal_distribution<> dist(); //MEDIANA , DESVIACIÓN TÍPICA
+}
+
+void Emisor::update(float dt)
+{
+	_currentTimer += dt;
 }

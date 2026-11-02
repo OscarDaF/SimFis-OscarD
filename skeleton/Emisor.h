@@ -8,7 +8,7 @@ class Emisor
 
 private:
 
-	std::random_device rd;
+	std::mt19937 rd;
 	
 	Vector3D _pos;
 	Vector3D _dirEmisión; //Debe estar normalizado para multiplicarlo por la velocidad
@@ -22,6 +22,8 @@ public:
 	{
 	};
 	
+	void update(float dt);
+
 	bool canGenerate()
 	{
 		if (_currentTimer > _tasaGeneracion)

@@ -5,20 +5,20 @@
 class Proyectil : public Particle
 {
 private:
-	Vector3 _velReal;
-	Vector3 _gravReal;
+	Vector3D _velReal;
+	Vector3D _gravReal;
 	float _mReal;
 	float vSimple;
 	
 public:
-	Proyectil(Vector3 pos, Vector3 velReal, float mReal, Vector3 gReal);
+	Proyectil(Vector3D pos, Vector3D velReal, float mReal, Vector3D gReal);
 
 
 	void ChangeRealMass(float newMass);
-	void ChangeGravity(Vector3 newGravity);	
+	void ChangeGravity(Vector3D newGravity);
 
 private:
 	float toSimulatedMass(float mass);
-	Vector3 toSimulatedGravity(Vector3 gravity);
+	Vector3D toSimulatedGravity(Vector3D gravity);
 };
 

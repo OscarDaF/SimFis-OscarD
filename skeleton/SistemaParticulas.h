@@ -15,7 +15,9 @@ private:
 public:
 
 	SistemaParticulas();
-	SistemaParticulas(Vector3 pos);
+	SistemaParticulas(Vector3 pos , Vector3D dir);
+
+	~SistemaParticulas();
 
 	void addEmissor();
 

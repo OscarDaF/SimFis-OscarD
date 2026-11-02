@@ -1,6 +1,6 @@
 #include "Proyectil.h"
 
-Proyectil::Proyectil(Vector3 pos, Vector3 velReal, float mReal, Vector3 gReal) : Particle() , _velReal(velReal) , _mReal(mReal) , _gravReal(gReal)
+Proyectil::Proyectil(Vector3D pos, Vector3D velReal, float mReal, Vector3D gReal) : Particle() , _velReal(velReal) , _mReal(mReal) , _gravReal(gReal)
 {
 	vSimple = 5.0f;
 	_pose = physx::PxTransform(pos);
@@ -16,7 +16,7 @@ void Proyectil::ChangeRealMass(float newMass)
 {
 }
 
-void Proyectil::ChangeGravity(Vector3 newGravity)
+void Proyectil::ChangeGravity(Vector3D newGravity)
 {
 }
 
@@ -25,7 +25,7 @@ float Proyectil::toSimulatedMass(float mass)
 	return mass * pow((_velReal.magnitude() / _vel.magnitude()), 2);;
 }
 
-Vector3 Proyectil::toSimulatedGravity(Vector3 gravity)
+Vector3D Proyectil::toSimulatedGravity(Vector3D gravity)
 {
 	return gravity * pow((_vel.magnitude() / _velReal.magnitude()), 2);
 }

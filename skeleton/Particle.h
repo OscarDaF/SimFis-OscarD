@@ -7,9 +7,9 @@ class Particle
 {
 protected:
 
-	Vector3 _vel;
-	Vector3 _ac;
-	Vector3 _gravedad;
+	Vector3D _vel;
+	Vector3D _ac;
+	Vector3D _gravedad;
 	float _m;
 	float damping;
 	float _tVida;
@@ -26,7 +26,7 @@ protected:
 
 public:
 	Particle();
-	Particle(Vector3 Pos , Vector3 vel , Vector3 grav , float tVida = 10.0f);
+	Particle(Vector3D Pos , Vector3D vel , Vector3D grav , float tVida);
 	~Particle();
 
 	//MÉTODOS DE INTEGRACIÓN
