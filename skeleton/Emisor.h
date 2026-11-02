@@ -7,7 +7,12 @@
 
 class Emisor
 {
-
+public:
+	enum Distribution
+	{
+		UNIFORME,
+		GAUSSIANA
+	};
 private:
 
 	std::mt19937 rd;
@@ -17,11 +22,25 @@ private:
 	float _tasaGeneracion;
 	float _currentTimer = 0;
 	float _vel;
+	Distribution _emDistribucion;
+
+	struct ConoDistribucion
+	{
+		float _rOrigen;
+
+		float _rObjetivo;
+		float _hObjetivo;
+	};
+	ConoDistribucion _emCono;
+
 public:
 	Emisor();
-	Emisor(Vector3D pos, Vector3D dir, float tas, float v) :
-		_pos(pos), _dirEmisión(dir.normalize()), _tasaGeneracion(tas), _vel(v)
+	Emisor(Vector3D pos, Vector3D dir, float tas, float v , Distribution dist = Distribution::UNIFORME) :
+		_pos(pos), _dirEmisión(dir.normalize()), _tasaGeneracion(tas), _vel(v) , _emDistribucion(dist)
 	{
+		_emCono._rOrigen = .0f;
+		_emCono._rObjetivo = 1.0f;
+		_emCono._hObjetivo = 1.0f;
 	};
 	
 	void update(float dt);
@@ -35,8 +54,18 @@ public:
 		}
 		else return false;
 	}
+	
 	Particle* generarParticula();
 
+	void setOriginConeRadius(float r);
+	void setTargetConeRadius(float r);
+	void setTargetConeHeight(float h);
+
+
+	Vector3D generateRandomDirectionVector();
+	Vector3D generateRandomPositionInRadius(float r);
+
+	float randomDistribution(float limInf , float limSup);
 	float distUniforme();
 	float distGaussiana();
 

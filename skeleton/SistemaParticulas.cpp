@@ -7,6 +7,8 @@ SistemaParticulas::SistemaParticulas()
 SistemaParticulas::SistemaParticulas(Vector3 pos, Vector3D dir)
 {
 	Emisor emisorBase(pos, dir, .02f, 70);
+	emisorBase.setOriginConeRadius(1.5f);
+	emisorBase.setTargetConeRadius(1.5f);
 	_emisores.push_back(emisorBase);
 }
 
