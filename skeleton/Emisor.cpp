@@ -4,10 +4,10 @@ Particle* Emisor::generarParticula()
 {
 	//Variables a randomizar
 	Vector3D npDir = _dirEmisión * _vel;
-	Vector3D a(0, 0, 0);
+	Vector3D a(0, -4.0, 0);
 
 	Particle* p = new Particle(_pos, npDir, a, 10);
-	return (nullptr);
+	return (p);
 }
 
 void Emisor::distUniforme()
