@@ -20,6 +20,7 @@
     <ClCompile Include="SistemaParticulas.cpp" />
     <ClCompile Include="Emisor.cpp" />
     <ClCompile Include="P2S_Scene.cpp" />
+    <ClCompile Include="Chimenea.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="SistemaParticulas.h" />
     <ClInclude Include="Emisor.h" />
     <ClInclude Include="P2S_Scene.h" />
+    <ClInclude Include="Chimenea.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

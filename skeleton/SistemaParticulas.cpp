@@ -6,11 +6,11 @@ SistemaParticulas::SistemaParticulas()
 
 SistemaParticulas::SistemaParticulas(Vector3 pos, Vector3D dir)
 {
-	Emisor emisorBase(pos, dir, .02f, 40);
-	emisorBase.setOriginConeRadius(40.0f);
-	emisorBase.setTargetConeRadius(.0f);
-	emisorBase.setTargetConeHeight(15.0f);
-	_emisores.push_back(emisorBase);
+	//Emisor emisorBase(pos, .02f, 100 , 0.7 , Emisor::GAUSSIANA , Emisor::FORMA::CUBO);
+	//emisorBase.setOriginConeRadius(0.0f);
+	//emisorBase.setTargetConeRadius(5.0f);
+	//emisorBase.setTargetConeHeight(15.0f);
+	//_emisores.push_back(emisorBase);
 }
 
 SistemaParticulas::~SistemaParticulas()
@@ -23,6 +23,11 @@ SistemaParticulas::~SistemaParticulas()
 			p = nullptr;
 		}
 	}
+}
+
+void SistemaParticulas::attachEmisor(Emisor copiaEmisor)
+{
+	_emisores.push_back(copiaEmisor);
 }
 
 void SistemaParticulas::update(float dt)
@@ -44,6 +49,7 @@ void SistemaParticulas::update(float dt)
 			p->integrateVerlet(dt);
 			if (p->getTiempoDeVida() <= 0)
 			{
+				
 				delete p;
 				p = nullptr;
 			}

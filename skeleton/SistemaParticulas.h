@@ -6,6 +6,7 @@
 #include "Vector3D.h"
 #include "Particle.h"
 #include "Emisor.h"
+#include "Chimenea.h"
 
 class SistemaParticulas
 {
@@ -21,7 +22,7 @@ public:
 
 	~SistemaParticulas();
 
-	void addEmissor();
+	void attachEmisor(Emisor copiaEmisor);
 
 	void update(float dt);
 	

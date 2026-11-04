@@ -8,7 +8,8 @@ Particle::Particle() : _pose({0,0,0}) , _vel({0,0,0}) , initialCalc(true) , _gra
 
 }
 
-Particle::Particle(Vector3D Pos, Vector3D vel , Vector3D grav , float tVida) : _vel(vel) , initialCalc(true) , _gravedad(grav) , _tVida(tVida)
+Particle::Particle(Vector3D Pos, Vector3D vel , Vector3D grav , float tVida) : 
+	_vel(vel) , initialCalc(true) , _gravedad(grav) , _tVida(tVida) , _tVidaAct(tVida)
 {
 	_pose = physx::PxTransform(Pos);
 	_ac = { 3.0f,.0f,.0f };
@@ -16,10 +17,21 @@ Particle::Particle(Vector3D Pos, Vector3D vel , Vector3D grav , float tVida) : _
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(1.0f)) , &_pose, Vector4(.0f , 1.0f , .0f , 1.0f));
 }
 
+Particle::Particle(Vector3D Pos, Vector3D vel, Vector3D grav, float tVida, FORMA shape , float size , Vector4 color , bool redSize = false)
+	: _vel(vel), initialCalc(true), _gravedad(grav), _tVida(tVida) , _shape(shape) , _size(size), _color(color), _tVidaAct(tVida), _canReduceSize(redSize)
+{
+	_pose = physx::PxTransform(Pos);
+	_ac = { 3.0f,.0f,.0f };
+	damping = .98f;
+	buildShape(_size);
+}
+
+
 Particle::~Particle()
 {
 	if (renderItem != nullptr)
 	{
+		renderItem->shape->release();
 		renderItem->release();
 		renderItem = nullptr;
 	}
@@ -62,5 +74,36 @@ void Particle::integrateVerlet(double t)
 
 void Particle::update(float dt)
 {
-	_tVida -= dt;
+	if (_canReduceSize) resize();
+	_tVidaAct -= dt;
+}
+
+void Particle::resize()
+{
+	if (_tVidaAct > 0)
+	{
+		renderItem->release();
+		float nSize = (_tVidaAct * _size) / _tVida;
+		buildShape(nSize);
+	}
+}
+
+void Particle::buildShape(float size)
+{
+	physx::PxShape* partShape;
+	switch (_shape)
+	{
+	case Particle::ESFERA:
+		partShape = CreateShape(physx::PxSphereGeometry(size));
+		break;
+	case Particle::CUBO:
+		partShape = CreateShape(physx::PxBoxGeometry(size, size, size));
+		break;
+	case Particle::CAPSULE:
+		partShape = CreateShape(physx::PxCapsuleGeometry(size, size));
+	default:
+		break;
+	}
+	
+	renderItem = new RenderItem(partShape, &_pose, _color);
 }

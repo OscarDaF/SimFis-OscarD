@@ -8,12 +8,14 @@
 class Emisor
 {
 public:
+	
+
 	enum Distribution
 	{
 		UNIFORME,
 		GAUSSIANA
 	};
-private:
+protected:
 
 	std::mt19937 rd;
 	
@@ -23,20 +25,45 @@ private:
 	float _currentTimer = 0;
 	float _vel;
 	Distribution _emDistribucion;
-
+	Vector3D _gravity;
 	struct ConoDistribucion
 	{
-		float _rOrigen;
-
-		float _rObjetivo;
-		float _hObjetivo;
+		float _rOrigen = .0f;
+		float _rObjetivo = .0f;
+		float _hObjetivo = 1.0f;
 	};
 	ConoDistribucion _emCono;
+	
+	//ATRIBUTOS PARTICULAS
+
+	float _generaltV;
+	Particle::FORMA _formaParticulas;
+	float _particleSize;
+	Vector4 _colorPart;
+	bool _canReduceSize;
 
 public:
 	Emisor();
-	Emisor(Vector3D pos, Vector3D dir, float tas, float v , Distribution dist = Distribution::UNIFORME) :
-		_pos(pos), _dirEmisión(dir.normalize()), _tasaGeneracion(tas), _vel(v) , _emDistribucion(dist)
+	Emisor(Vector3D pos, 
+		float tas, 
+		float v,
+		float tiempoVidaGen,
+		Distribution dist = Distribution::UNIFORME,
+		Particle::FORMA formaPart = Particle::ESFERA,
+		float size = 1.0f,
+		Vector4 color = {1.0f , 1.0f ,1.0f , 1.0f},
+		Vector3D grav = Vector3D(0,-10,0),
+		bool canReduceSize = false
+		):
+		_pos(pos), 
+		_tasaGeneracion(tas), 
+		_vel(v) , 
+		_generaltV(tiempoVidaGen),
+		_emDistribucion(dist), 
+		_formaParticulas(formaPart),
+		_particleSize(size),
+		_colorPart(color),
+		_canReduceSize(canReduceSize)
 	{
 	};
 	
@@ -52,8 +79,10 @@ public:
 		else return false;
 	}
 	
+	//METODOS GENERACIÓN PARTÍCULA
 	Particle* generarParticula();
 
+	//Metodos para modificar el cono de generación
 	void setOriginConeRadius(float r);
 	void setTargetConeRadius(float r);
 	void setTargetConeHeight(float h);
@@ -62,6 +91,7 @@ public:
 	Vector3D generateRandomDirectionVector(Vector3D position);
 	Vector3D generateRandomPositionInRadius(float r);
 
+	//Distrubución random
 	float randomDistribution(float limInf , float limSup);
 	float distUniforme();
 	float distGaussiana();

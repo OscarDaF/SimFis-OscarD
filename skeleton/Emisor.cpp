@@ -3,11 +3,23 @@
 Particle* Emisor::generarParticula()
 {
 	//Variables a randomizar
+
+	//Posicion random
 	Vector3D randomPos = generateRandomPositionInRadius(_emCono._rOrigen);
+	//Dirección random a partir de la posicion
 	Vector3D randomDir = generateRandomDirectionVector(randomPos);
 
-	Vector3D g(0, -0.0, 0);
-	Particle* p = new Particle(randomPos, randomDir * _vel , g, 1.0f);
+	//Velocidad aleatoria
+	float randomV = randomDistribution(_vel * (1 - 0.1f), _vel * (1 + 0.1f));
+
+	//TV aleatorio
+	float randomTV = randomDistribution(_generaltV * (1 - 0.1f), _generaltV * (1 + 0.1f));
+
+	//Tamaño aleatorio
+	float randomSize = randomDistribution(_particleSize * (1 - 0.1f), _particleSize * (1 + 0.1f));
+	
+
+	Particle* p = new Particle(randomPos, randomDir * randomV , _gravity, randomTV , _formaParticulas , randomSize, _colorPart , _canReduceSize);
 	return (p);
 }
 
@@ -60,8 +72,8 @@ float Emisor::randomDistribution(float limInf, float limSup)
 	else if (_emDistribucion == Distribution::GAUSSIANA)
 	{
 		float media = (limSup + limInf) / 2.0f;
-		float dT = limSup / 6.0f;
-		std::normal_distribution<float> dist(media, limSup); //MEDIANA , DESVIACIÓN TÍPICA
+		float dT = (limSup - limInf)/ 6.0f;
+		std::normal_distribution<float> dist(media, dT); //MEDIANA , DESVIACIÓN TÍPICA
 		rNum = dist(gen);
 
 	}
