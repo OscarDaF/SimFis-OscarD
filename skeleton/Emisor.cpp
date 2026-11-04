@@ -4,10 +4,14 @@ Particle* Emisor::generarParticula()
 {
 	//Variables a randomizar
 
-	//Posicion random
-	Vector3D randomPos = generateRandomPositionInRadius(_emCono._rOrigen);
+	//Generamos una posición aleatoria dentro del primer radio y otro del segundo
+	
+	auto posYDir = generatePosAndDirection();
+
+	//Posicion random dentro del primer radio 
+	Vector3D randomPos = posYDir.first;
 	//Dirección random a partir de la posicion
-	Vector3D randomDir = generateRandomDirectionVector(randomPos);
+	Vector3D randomDir = (posYDir.second - posYDir.first).normalize();
 
 	//Velocidad aleatoria
 	float randomV = randomDistribution(_vel * (1 - 0.1f), _vel * (1 + 0.1f));
@@ -55,6 +59,31 @@ Vector3D Emisor::generateRandomPositionInRadius(float r)
 
 	Vector3 randomPoint(randomCos * r, 0, randomSin * r);
 	return randomPoint;
+}
+
+std::pair<Vector3D, Vector3D> Emisor::generatePosAndDirection()
+{
+
+	Vector3D centerR1 = _pos;
+	Vector3D centerR2 = _pos + (_dirEmision * _emCono._hObjetivo);
+
+	Vector3D auxiliar = (std::abs(_dirEmision.z) < 0.99) ? Vector3D{ 0.0, 0.0, 1.0 } : Vector3D{ 1.0, 0.0, 0.0 };
+
+	Vector3D u = auxiliar.cross(_dirEmision).normalize();
+	Vector3D w = _dirEmision.cross(u);
+
+	//Seno y coseno random para los dos circulos
+	float randomSinR1 = randomDistribution(-1, 1);
+	float randomCosR1 = randomDistribution(-1, 1);
+
+	float randomSinR2 = randomDistribution(-1, 1);
+	float randomCosR2 = randomDistribution(-1, 1);
+
+	Vector3D posIni = centerR1 + (u * (randomCosR1 * _emCono._rOrigen)) + (w * (randomSinR1 * _emCono._rOrigen));
+	Vector3D pointSecondCircle = centerR2 + (u * (randomCosR2 * _emCono._rObjetivo)) + (w * (randomSinR2 * _emCono._rObjetivo));
+
+
+	return std::pair<Vector3D, Vector3D>(posIni , pointSecondCircle);
 }
 
 

@@ -18,6 +18,7 @@ public:
 
 	float dot(const Vector3D& v) const;
 	Vector3D cross(const Vector3D& v) const;
+	static Vector3D cross(const Vector3D& v1, const Vector3D& v2);
 
 	void operator=(Vector3D other)
 	{

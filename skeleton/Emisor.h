@@ -20,7 +20,7 @@ protected:
 	std::mt19937 rd;
 	
 	Vector3D _pos;
-	Vector3D _dirEmisión; //Debe estar normalizado para multiplicarlo por la velocidad
+	Vector3D _dirEmision; //Debe estar normalizado para multiplicarlo por la velocidad
 	float _tasaGeneracion;
 	float _currentTimer = 0;
 	float _vel;
@@ -44,7 +44,8 @@ protected:
 
 public:
 	Emisor();
-	Emisor(Vector3D pos, 
+	Emisor(Vector3D pos,
+		Vector3D _dir,
 		float tas, 
 		float v,
 		float tiempoVidaGen,
@@ -56,6 +57,7 @@ public:
 		bool canReduceSize = false
 		):
 		_pos(pos), 
+		_dirEmision(_dir),
 		_tasaGeneracion(tas), 
 		_vel(v) , 
 		_generaltV(tiempoVidaGen),
@@ -90,6 +92,8 @@ public:
 
 	Vector3D generateRandomDirectionVector(Vector3D position);
 	Vector3D generateRandomPositionInRadius(float r);
+
+	std::pair<Vector3D, Vector3D> generatePosAndDirection();
 
 	//Distrubución random
 	float randomDistribution(float limInf , float limSup);
