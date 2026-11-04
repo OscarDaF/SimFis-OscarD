@@ -2,7 +2,7 @@
 
 Particle::Particle() : _pose({0,0,0}) , _vel({0,0,0}) , initialCalc(true) , _gravedad({0,0,0})
 {
-	_ac = { 3.0f,.0f,.0f };
+	_ac = { 0.0f,.0f,.0f };
 	damping = .98f;
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(1.0f)), &_pose, Vector4(.0f, 1.0f, .0f, 1.0f));
 
@@ -12,7 +12,7 @@ Particle::Particle(Vector3D Pos, Vector3D vel , Vector3D grav , float tVida) :
 	_vel(vel) , initialCalc(true) , _gravedad(grav) , _tVida(tVida) , _tVidaAct(tVida)
 {
 	_pose = physx::PxTransform(Pos);
-	_ac = { 3.0f,.0f,.0f };
+	_ac = { 0.0f,.0f,.0f };
 	damping = .98f;
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(1.0f)) , &_pose, Vector4(.0f , 1.0f , .0f , 1.0f));
 }
@@ -21,7 +21,7 @@ Particle::Particle(Vector3D Pos, Vector3D vel, Vector3D grav, float tVida, FORMA
 	: _vel(vel), initialCalc(true), _gravedad(grav), _tVida(tVida) , _shape(shape) , _size(size), _color(color), _tVidaAct(tVida), _canReduceSize(redSize)
 {
 	_pose = physx::PxTransform(Pos);
-	_ac = { 3.0f,.0f,.0f };
+	_ac = { 0.0f,.0f,.0f };
 	damping = .98f;
 	buildShape(_size);
 }
