@@ -60,7 +60,7 @@ void Particle::integrateSemiImplicitEuler(double t)
 
 void Particle::integrateVerlet(double t)
 {
-	calculateForces(t);
+ 	calculateForces(t);
 	recalculateAC();
 	if (initialCalc)
 	{

@@ -17,4 +17,5 @@ Vector3D GeneradorExplosion::calculateForce(Particle* p , float dt)
 void GeneradorExplosion::update(float dt)
 {
     _tExplosion += dt;
+    GeneradorFuerza::update(dt);
 }
