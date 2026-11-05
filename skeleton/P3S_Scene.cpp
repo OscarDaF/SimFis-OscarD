@@ -13,6 +13,9 @@ void P3S_Scene::init()
 	Vector3D dir(0, 1.0f, 0);
 
 	sistema = new SistemaParticulas();
+	//Gravedad
+	
+	GeneradorGravedad* gravedad = new GeneradorGravedad({0,-9.8f,0});
 
 	//Chimenea
 	Chimenea* chimenea = new Chimenea(pos, dir, 6.0f, 10.0f);
@@ -20,6 +23,7 @@ void P3S_Scene::init()
 	chimenea->setTargetConeRadius(1.0f);
 	GeneradorViento* vientoGen = new GeneradorViento({ 70 , 0 , 0 });
 	chimenea->attachGenerator(vientoGen);
+	chimenea->attachGenerator(gravedad);
 	sistema->attachEmisor(chimenea);
 
 	//TorbellinoConfeti
@@ -28,7 +32,9 @@ void P3S_Scene::init()
 	GeneradorTorbellino* torbellino = new GeneradorTorbellino({ 0,5,0 }, 2);
 
 	confeti->attachGenerator(torbellino);
+	confeti->attachGenerator(gravedad);
 	confeti2->attachGenerator(torbellino);
+	confeti2->attachGenerator(gravedad);
 
 	sistema->attachEmisor(confeti);
 	sistema->attachEmisor(confeti2);
@@ -38,6 +44,7 @@ void P3S_Scene::init()
 	Cenizas* ceniza = new Cenizas({ -50,0,0 }, { 0,1,0 }, 3.0f, { 0.7f , 0.2f , .0f , 1.0f }, { 0.2f,0.2f, 0.2f, 1.0f });
 	GeneradorExplosion* explosion = new GeneradorExplosion({ -50,40,0 }, 50000, 30, 4, 0);
 	ceniza->attachGenerator(explosion);
+	ceniza->attachGenerator(gravedad);
 	sistema->attachEmisor(ceniza);
 }
 
