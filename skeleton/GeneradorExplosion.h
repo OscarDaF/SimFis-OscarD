@@ -21,7 +21,11 @@ public:
 	{
 		if (key == 'E' || key == 'e')
 		{
-			isActive = !isActive;
+			if (!stateVisitedInCycle)
+			{
+				isActive = !isActive;
+				stateVisitedInCycle = true;
+			}
 			_tExplosion = 0;
 		}
 	}

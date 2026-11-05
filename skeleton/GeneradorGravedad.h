@@ -12,7 +12,11 @@ public:
 	{
 		if (key == 'g' || key == 'G')
 		{
-			isActive = !isActive;
+			if (!stateVisitedInCycle)
+			{
+				isActive = !isActive;
+				stateVisitedInCycle = true;
+			}
 		}
 	}
 };

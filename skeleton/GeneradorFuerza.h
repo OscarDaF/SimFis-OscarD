@@ -5,12 +5,13 @@ class GeneradorFuerza
 {
 protected:
 	bool isActive;
+	bool stateVisitedInCycle;
 public:
-	GeneradorFuerza() { isActive = true; };
+	GeneradorFuerza() { isActive = true; stateVisitedInCycle = false; };
 	virtual Vector3D calculateForce(Particle* p , float dt) {
 		return { 0,0,0 };
 	}
-	virtual void update(float dt) {};
+	virtual void update(float dt) { stateVisitedInCycle = false; };
 	virtual void keyPress(unsigned char key, const physx::PxTransform& camera) {
 	}
 	bool getActive() { return isActive; }
