@@ -7,7 +7,7 @@ protected:
 	
 public:
 	GeneradorFuerza() {};
-	virtual Vector3D calculateForce(Particle* p) {
+	virtual Vector3D calculateForce(Particle* p , float dt) {
 		return { 0,0,0 };
 	}
 };

@@ -7,6 +7,6 @@ private:
 public:
 	GeneradorGravedad(Vector3D gravedad) : GeneradorFuerza(), _gravedad(gravedad) {};
 
-	Vector3D calculateForce(Particle* p) override;
+	Vector3D calculateForce(Particle* p , float dt) override;
 };
 

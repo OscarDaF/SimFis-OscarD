@@ -264,6 +264,7 @@
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="Chimenea.cpp" />
     <ClCompile Include="Emisor.cpp" />
+    <ClCompile Include="GeneradorExplosion.cpp" />
     <ClCompile Include="GeneradorGravedad.cpp" />
     <ClCompile Include="GeneradorTorbellino.cpp" />
     <ClCompile Include="GeneradorViento.cpp" />
@@ -288,6 +289,7 @@
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Emisor.h" />
     <ClInclude Include="EmptyScene.h" />
+    <ClInclude Include="GeneradorExplosion.h" />
     <ClInclude Include="GeneradorFuerza.h" />
     <ClInclude Include="GeneradorGravedad.h" />
     <ClInclude Include="GeneradorTorbellino.h" />

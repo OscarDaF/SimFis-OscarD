@@ -54,7 +54,7 @@ public:
 	void integrateVerlet(double t);
 	void attachGeneratorsFromEm(std::vector<GeneradorFuerza*> gens) { _FuerzasAplicadas = gens; };
 	void update(float dt);
-	void calculateForces();
+	void calculateForces(float dt);
 	void recalculateAC();
 	// 
 	float getTiempoDeVida() { return _tVida; }

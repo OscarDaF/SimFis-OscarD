@@ -2,7 +2,7 @@
 #include "Particle.h"
 
 
-Vector3D GeneradorViento::calculateForce(Particle* p)
+Vector3D GeneradorViento::calculateForce(Particle* p, float dt)
 {
     Vector3D f = (_velViento - p->getVel()) * 5;
     return f;

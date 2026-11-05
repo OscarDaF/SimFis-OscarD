@@ -40,7 +40,7 @@ Particle::~Particle()
 
 void Particle::integrateEuler(double t)
 {
-	calculateForces();
+	calculateForces(t);
 	recalculateAC();
 	physx::PxTransform previousP = _pose;
 	_pose.p = previousP.p + (_vel * t);
@@ -51,7 +51,7 @@ void Particle::integrateEuler(double t)
 
 void Particle::integrateSemiImplicitEuler(double t)
 {
-	calculateForces();
+	calculateForces(t);
 	recalculateAC();
 	_vel = _vel + (_ac*t);
 	_vel = _vel * pow(damping , t);
@@ -60,7 +60,7 @@ void Particle::integrateSemiImplicitEuler(double t)
 
 void Particle::integrateVerlet(double t)
 {
-	calculateForces();
+	calculateForces(t);
 	recalculateAC();
 	if (initialCalc)
 	{
@@ -81,12 +81,12 @@ void Particle::update(float dt)
 	_tVidaAct -= dt;
 }
 
-void Particle::calculateForces()
+void Particle::calculateForces(float dt)
 {
 	_acumuladorF = { 0,0,0 };
 	for (auto force : _FuerzasAplicadas)
 	{
-		_acumuladorF += force->calculateForce(this);
+		_acumuladorF += force->calculateForce(this , dt);
 	}
 }
 

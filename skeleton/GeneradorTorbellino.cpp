@@ -12,8 +12,8 @@ void GeneradorTorbellino::recalculatedVel(Particle* p)
     _velViento = vientoNuevo;
 }
 
-Vector3D GeneradorTorbellino::calculateForce(Particle* p)
+Vector3D GeneradorTorbellino::calculateForce(Particle* p , float dt)
 {
     recalculatedVel(p);
-    return GeneradorViento::calculateForce(p);
+    return GeneradorViento::calculateForce(p , dt);
 }

@@ -7,6 +7,6 @@ protected:
 public:
 	GeneradorViento(Vector3D vel) : GeneradorFuerza(), _velViento(vel) {};
 
-	Vector3D calculateForce(Particle* p) override;
+	Vector3D calculateForce(Particle* p, float dt) override;
 };
 

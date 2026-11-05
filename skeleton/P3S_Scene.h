@@ -25,6 +25,7 @@ public:
     }
 
     void cleanup() override {
+        delete sistema;
 
     }
 
