@@ -111,6 +111,11 @@ public:
 	float distUniforme();
 	float distGaussiana();
 
+	//Input
+	void keyPress(unsigned char key, const physx::PxTransform& camera) {
+		for (auto genf : _emFuerzasAplicadas)
+			genf->keyPress(key, camera);
+	}
 
 };
 

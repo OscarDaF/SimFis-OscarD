@@ -8,5 +8,12 @@ public:
 	GeneradorViento(Vector3D vel) : GeneradorFuerza(), _velViento(vel) {};
 
 	Vector3D calculateForce(Particle* p, float dt) override;
+	void keyPress(unsigned char key, const physx::PxTransform& camera) override
+	{
+		if (key == 'V' || key == 'v')
+		{
+			isActive = !isActive;
+		}
+	}
 };
 

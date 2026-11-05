@@ -22,6 +22,7 @@ public:
 
             //m_transform.p = physx::PxVec3(0.0f, 10.0f, 0.0f); // Reset
         }
+        sistema->keyPress(key, camera);
     }
 
     void cleanup() override {

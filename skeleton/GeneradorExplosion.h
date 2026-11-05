@@ -17,5 +17,12 @@ public:
 	};
 	Vector3D calculateForce(Particle* p, float dt) override;
 	void update(float dt) override;
+	void keyPress(unsigned char key, const physx::PxTransform& camera) override
+	{
+		if (key == 'E' || key == 'e')
+		{
+			isActive = !isActive;
+		}
+	}
 };
 

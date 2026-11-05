@@ -2,6 +2,7 @@
 
 SistemaParticulas::SistemaParticulas()
 {
+	generate = true;
 }
 
 SistemaParticulas::~SistemaParticulas()
@@ -27,7 +28,7 @@ void SistemaParticulas::update(float dt)
 	for (auto& e : _emisores)
 	{
 		e->update(dt);
-		if (e->canGenerate())
+		if (e->canGenerate() && generate)
 		{
 			//std::cout << "Generando" << std:: endl;
 			_particulas.push_back(e->generarParticula());
@@ -48,5 +49,11 @@ void SistemaParticulas::update(float dt)
 			}
 		}
 	}
+}
+
+void SistemaParticulas::switcGenerator()
+{
+	generate = !generate;
+	std::cout << "Switch " << generate <<  std::endl;
 }
 
