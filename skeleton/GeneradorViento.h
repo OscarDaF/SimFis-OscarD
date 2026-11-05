@@ -2,7 +2,7 @@
 #include "GeneradorFuerza.h"
 class GeneradorViento : public GeneradorFuerza
 {
-private:
+protected:
 	Vector3D _velViento;
 public:
 	GeneradorViento(Vector3D vel) : GeneradorFuerza(), _velViento(vel) {};

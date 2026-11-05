@@ -24,6 +24,7 @@
     <ClCompile Include="GeneradorGravedad.cpp" />
     <ClCompile Include="P3S_Scene.cpp" />
     <ClCompile Include="GeneradorViento.cpp" />
+    <ClCompile Include="GeneradorTorbellino.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="GeneradorGravedad.h" />
     <ClInclude Include="P3S_Scene.h" />
     <ClInclude Include="GeneradorViento.h" />
+    <ClInclude Include="GeneradorTorbellino.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

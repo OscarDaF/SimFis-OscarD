@@ -58,6 +58,7 @@ public:
 	void recalculateAC();
 	// 
 	float getTiempoDeVida() { return _tVida; }
+	Vector3D getPos() { return _pose.p;}
 	Vector3D getVel() { return _vel; }
 	void setColor(Vector4 color) { _color = color; }
 private:
