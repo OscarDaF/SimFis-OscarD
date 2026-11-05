@@ -62,8 +62,10 @@ public:
 	float getTiempoDeVida() { return _tVidaAct; }
 	Vector3D getPos() { return _pose.p;}
 	Vector3D getVel() { return _vel; }
+	float getMass() { return _m; }
 	void setColor(Vector4 color) { _color = color; }
 	void setSecColor(Vector4 color) { _secColor = color; }
+
 
 private:
 	void resize();

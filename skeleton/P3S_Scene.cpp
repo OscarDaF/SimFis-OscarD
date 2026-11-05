@@ -24,7 +24,7 @@ void P3S_Scene::init()
 	GeneradorViento* vientoGen = new GeneradorViento({ 70 , 0 , 0 });
 	chimenea->attachGenerator(vientoGen);
 	chimenea->attachGenerator(gravedad);
-	//sistema->attachEmisor(chimenea);
+	sistema->attachEmisor(chimenea);
 
 	//TorbellinoConfeti
 	Confeti* confeti = new Confeti({ 20,0,0 }, { -1,1,0 }, 8.0f);
@@ -45,7 +45,7 @@ void P3S_Scene::init()
 	GeneradorExplosion* explosion = new GeneradorExplosion({ -50,40,0 }, 50000, 30, 4, 0);
 	ceniza->attachGenerator(explosion);
 	ceniza->attachGenerator(gravedad);
-	//sistema->attachEmisor(ceniza);
+	sistema->attachEmisor(ceniza);
 }
 
 void P3S_Scene::update(double dt)

@@ -26,7 +26,7 @@
 #include "P1S_Scene.h"
 #include "P2S_Scene.h"
 #include "P3S_Scene.h"
-
+#include "PDEMO_Scene.h"
 #include <foundation/PxSimpleTypes.h>
 #include <PxPhysicsVersion.h> // <- Macros for PhysX version checking
 
@@ -106,6 +106,7 @@ void initPhysics(bool interactive)
 	SceneManager::instance().registerScene<P1S_Scene>("Escena P1");
 	SceneManager::instance().registerScene<P2S_Scene>("Escena P2");
 	SceneManager::instance().registerScene<P3S_Scene>("Escena P3");
+	SceneManager::instance().registerScene<PDEMO_Scene>("ESCENA DEMO");
 	
 	// Cargar la escena inicial
 	SceneManager::instance().changeScene("EscenaVacia");
@@ -201,6 +202,8 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		SceneManager::instance().changeScene("Escena P2");
 	else if (key == '3')
 		SceneManager::instance().changeScene("Escena P3");
+	else if (key == '4')
+		SceneManager::instance().changeScene("ESCENA DEMO");
 
 	SceneManager::instance().keyPress(key, camera);
 }

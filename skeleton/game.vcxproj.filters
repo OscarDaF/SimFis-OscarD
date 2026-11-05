@@ -28,6 +28,9 @@
     <ClCompile Include="GeneradorExplosion.cpp" />
     <ClCompile Include="Cenizas.cpp" />
     <ClCompile Include="Confeti.cpp" />
+    <ClCompile Include="PDEMO_Scene.cpp" />
+    <ClCompile Include="Planetoide.cpp" />
+    <ClCompile Include="GeneradorGravitatorioReal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -59,6 +62,9 @@
     <ClInclude Include="GeneradorExplosion.h" />
     <ClInclude Include="Cenizas.h" />
     <ClInclude Include="Confeti.h" />
+    <ClInclude Include="PDEMO_Scene.h" />
+    <ClInclude Include="Planetoide.h" />
+    <ClInclude Include="GeneradorGravitatorioReal.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
