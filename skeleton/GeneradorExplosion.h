@@ -22,6 +22,7 @@ public:
 		if (key == 'E' || key == 'e')
 		{
 			isActive = !isActive;
+			_tExplosion = 0;
 		}
 	}
 };

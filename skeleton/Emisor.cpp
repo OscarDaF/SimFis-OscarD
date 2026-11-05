@@ -23,7 +23,22 @@ Particle* Emisor::generarParticula()
 	float randomSize = randomDistribution(_particleSize * (1 - 0.1f), _particleSize * (1 + 0.1f));
 	
 
-	Particle* p = new Particle(randomPos, randomDir * randomV , _gravity , 3 , randomTV , _formaParticulas , randomSize, _colorPart , _canReduceSize);
+	Particle::FORMA forma;
+	if (_formaParticulas == Particle::RANDOM)
+	{
+		forma = randomForma();
+	}
+	else forma = _formaParticulas;
+
+	Vector4 color;
+	if (_randomColor)
+	{
+		color = { randomDistribution(0,1),randomDistribution(0,1) ,randomDistribution(0,1) , 1.0f };
+	}
+	else color = _colorPart;
+
+	Particle* p = new Particle(randomPos, randomDir * randomV , _gravity , 3 , randomTV , forma , randomSize, color , _canReduceSize);
+	p->setSecColor(_secColorPart);
 	p->attachGeneratorsFromEm(_emFuerzasAplicadas);
 	return (p);
 }
@@ -109,6 +124,15 @@ float Emisor::randomDistribution(float limInf, float limSup)
 	}
 	return rNum;
 }
+
+Particle::FORMA Emisor::randomForma()
+{
+	std::mt19937 gen(rd());
+
+	std::uniform_int_distribution<> dist(Particle::ESFERA, Particle::RANDOM -1);//LIMITES
+	return static_cast<Particle::FORMA>( dist(gen));
+}
+
 
 float Emisor::distUniforme()
 {

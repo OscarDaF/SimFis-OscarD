@@ -262,7 +262,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="callbacks.cpp" />
+    <ClCompile Include="Cenizas.cpp" />
     <ClCompile Include="Chimenea.cpp" />
+    <ClCompile Include="Confeti.cpp" />
     <ClCompile Include="Emisor.cpp" />
     <ClCompile Include="GeneradorExplosion.cpp" />
     <ClCompile Include="GeneradorGravedad.cpp" />
@@ -285,7 +287,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="callbacks.hpp" />
+    <ClInclude Include="Cenizas.h" />
     <ClInclude Include="Chimenea.h" />
+    <ClInclude Include="Confeti.h" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Emisor.h" />
     <ClInclude Include="EmptyScene.h" />

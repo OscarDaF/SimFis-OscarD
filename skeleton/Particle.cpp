@@ -1,5 +1,5 @@
 #include "Particle.h"
-
+#include <algorithm>
 Particle::Particle() : _pose({0,0,0}) , _vel({0,0,0}) , initialCalc(true) , _gravedad({0,0,0})
 {
 	_ac = { 0.0f,.0f,.0f };
@@ -109,6 +109,7 @@ void Particle::resize()
 
 void Particle::buildShape(float size)
 {
+
 	physx::PxShape* partShape;
 	switch (_shape)
 	{
@@ -123,6 +124,17 @@ void Particle::buildShape(float size)
 	default:
 		break;
 	}
-	
-	renderItem = new RenderItem(partShape, &_pose, _color);
+	Vector4 coloractual;
+	if (_color != _secColor)
+	{
+		float alpha = _tVidaAct / _tVida;
+
+		if (alpha < 0.0f) alpha = 0.0f;
+		if (alpha > 1.0f) alpha = 1.0f;
+
+		coloractual = _secColor + (_color - _secColor) * alpha;
+	}
+	else coloractual = _color;
+
+	renderItem = new RenderItem(partShape, &_pose, coloractual);
 }

@@ -26,6 +26,8 @@
     <ClCompile Include="GeneradorViento.cpp" />
     <ClCompile Include="GeneradorTorbellino.cpp" />
     <ClCompile Include="GeneradorExplosion.cpp" />
+    <ClCompile Include="Cenizas.cpp" />
+    <ClCompile Include="Confeti.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -55,6 +57,8 @@
     <ClInclude Include="GeneradorViento.h" />
     <ClInclude Include="GeneradorTorbellino.h" />
     <ClInclude Include="GeneradorExplosion.h" />
+    <ClInclude Include="Cenizas.h" />
+    <ClInclude Include="Confeti.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

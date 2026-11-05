@@ -10,9 +10,10 @@ class Particle
 public:
 	enum FORMA
 	{
-		ESFERA,
+		ESFERA = 1,
 		CUBO,
-		CAPSULE
+		CAPSULE,
+		RANDOM
 	};
 protected:
 
@@ -39,6 +40,7 @@ protected:
 	float _tVidaAct;
 	bool _canReduceSize;
 	Vector4 _color;
+	Vector4 _secColor;
 	FORMA _shape;
 	float _size;
 
@@ -57,10 +59,12 @@ public:
 	void calculateForces(float dt);
 	void recalculateAC();
 	// 
-	float getTiempoDeVida() { return _tVida; }
+	float getTiempoDeVida() { return _tVidaAct; }
 	Vector3D getPos() { return _pose.p;}
 	Vector3D getVel() { return _vel; }
 	void setColor(Vector4 color) { _color = color; }
+	void setSecColor(Vector4 color) { _secColor = color; }
+
 private:
 	void resize();
 	void buildShape(float size);

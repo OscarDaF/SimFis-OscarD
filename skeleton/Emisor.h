@@ -45,7 +45,9 @@ protected:
 	Particle::FORMA _formaParticulas;
 	float _particleSize;
 	Vector4 _colorPart;
+	Vector4 _secColorPart;
 	bool _canReduceSize;
+	bool _randomColor;
 
 public:
 	Emisor();
@@ -60,7 +62,8 @@ public:
 		float size = 1.0f,
 		Vector4 color = {1.0f , 1.0f ,1.0f , 1.0f},
 		Vector3D grav = Vector3D(0,-10,0),
-		bool canReduceSize = false
+		bool canReduceSize = false,
+		bool randColors = false
 		):
 		_pos(pos), 
 		_dirEmision(_dir),
@@ -72,7 +75,9 @@ public:
 		_formaParticulas(formaPart),
 		_particleSize(size),
 		_colorPart(color),
-		_canReduceSize(canReduceSize)
+		_secColorPart(color),
+		_canReduceSize(canReduceSize),
+		_randomColor(randColors)
 	{
 	};
 	
@@ -100,6 +105,8 @@ public:
 	void setTargetConeRadius(float r);
 	void setTargetConeHeight(float h);
 
+	
+	void setSecColor(Vector4 col) { _secColorPart = col; };
 
 	Vector3D generateRandomDirectionVector(Vector3D position);
 	Vector3D generateRandomPositionInRadius(float r);
@@ -108,6 +115,7 @@ public:
 
 	//Distrubución random
 	float randomDistribution(float limInf , float limSup);
+	Particle::FORMA randomForma();
 	float distUniforme();
 	float distGaussiana();
 
