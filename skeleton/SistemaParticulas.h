@@ -4,7 +4,10 @@
 #include <unordered_map>
 
 #include "Vector3D.h"
+
 #include "Particle.h"
+#include "GeneradorFuerza.h"
+
 #include "Emisor.h"
 #include "Chimenea.h"
 
@@ -13,8 +16,8 @@ class SistemaParticulas
 private:
 	Vector3D pos;
 	std::vector<Particle*> _particulas;
-	
-	std::vector<Emisor> _emisores;
+	std::vector<GeneradorFuerza*> _generadoresFuerzas;
+	std::vector<Emisor*> _emisores;
 public:
 
 	SistemaParticulas();
@@ -22,8 +25,7 @@ public:
 
 	~SistemaParticulas();
 
-	void attachEmisor(Emisor copiaEmisor);
-
+	void attachEmisor(Emisor* copiaEmisor);
 	void update(float dt);
 	
 };

@@ -21,6 +21,8 @@
     <ClCompile Include="Emisor.cpp" />
     <ClCompile Include="P2S_Scene.cpp" />
     <ClCompile Include="Chimenea.cpp" />
+    <ClCompile Include="GeneradorGravedad.cpp" />
+    <ClCompile Include="P3S_Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -44,6 +46,9 @@
     <ClInclude Include="Emisor.h" />
     <ClInclude Include="P2S_Scene.h" />
     <ClInclude Include="Chimenea.h" />
+    <ClInclude Include="GeneradorFuerza.h" />
+    <ClInclude Include="GeneradorGravedad.h" />
+    <ClInclude Include="P3S_Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

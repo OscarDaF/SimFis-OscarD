@@ -264,10 +264,12 @@
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="Chimenea.cpp" />
     <ClCompile Include="Emisor.cpp" />
+    <ClCompile Include="GeneradorGravedad.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="P0S_Scene.cpp" />
     <ClCompile Include="P1S_Scene.cpp" />
     <ClCompile Include="P2S_Scene.cpp" />
+    <ClCompile Include="P3S_Scene.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Proyectil.cpp" />
     <ClCompile Include="RenderUtils.cpp" />
@@ -284,9 +286,12 @@
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Emisor.h" />
     <ClInclude Include="EmptyScene.h" />
+    <ClInclude Include="GeneradorFuerza.h" />
+    <ClInclude Include="GeneradorGravedad.h" />
     <ClInclude Include="P0S_Scene.h" />
     <ClInclude Include="P1S_Scene.h" />
     <ClInclude Include="P2S_Scene.h" />
+    <ClInclude Include="P3S_Scene.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Proyectil.h" />
     <ClInclude Include="RenderUtils.hpp" />

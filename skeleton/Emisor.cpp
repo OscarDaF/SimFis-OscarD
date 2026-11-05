@@ -23,7 +23,8 @@ Particle* Emisor::generarParticula()
 	float randomSize = randomDistribution(_particleSize * (1 - 0.1f), _particleSize * (1 + 0.1f));
 	
 
-	Particle* p = new Particle(randomPos, randomDir * randomV , _gravity, randomTV , _formaParticulas , randomSize, _colorPart , _canReduceSize);
+	Particle* p = new Particle(randomPos, randomDir * randomV , _gravity , 3 , randomTV , _formaParticulas , randomSize, _colorPart , _canReduceSize);
+	p->attachGeneratorsFromEm(_emFuerzasAplicadas);
 	return (p);
 }
 

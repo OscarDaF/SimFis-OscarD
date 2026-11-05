@@ -17,12 +17,13 @@ Particle::Particle(Vector3D Pos, Vector3D vel , Vector3D grav , float tVida) :
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(1.0f)) , &_pose, Vector4(.0f , 1.0f , .0f , 1.0f));
 }
 
-Particle::Particle(Vector3D Pos, Vector3D vel, Vector3D grav, float tVida, FORMA shape , float size , Vector4 color , bool redSize = false)
-	: _vel(vel), initialCalc(true), _gravedad(grav), _tVida(tVida) , _shape(shape) , _size(size), _color(color), _tVidaAct(tVida), _canReduceSize(redSize)
+Particle::Particle(Vector3D Pos, Vector3D vel, Vector3D grav , float mass, float tVida, FORMA shape , float size , Vector4 color , bool redSize = false)
+	: _vel(vel), initialCalc(true), _gravedad(grav), _tVida(tVida) , _m (mass), _shape(shape), _size(size), _color(color), _tVidaAct(tVida), _canReduceSize(redSize)
 {
 	_pose = physx::PxTransform(Pos);
 	_ac = { 0.0f,.0f,.0f };
 	damping = .98f;
+	_w = 1 / _m;
 	buildShape(_size);
 }
 
@@ -39,18 +40,19 @@ Particle::~Particle()
 
 void Particle::integrateEuler(double t)
 {
-	_ac += _gravedad;
+	calculateForces();
+	recalculateAC();
 	physx::PxTransform previousP = _pose;
 	_pose.p = previousP.p + (_vel * t);
 	Vector3 previousV = _vel;
 	_vel = previousV + (_ac * t);
 	_vel = _vel * pow(damping, t);
-	
 }
 
 void Particle::integrateSemiImplicitEuler(double t)
 {
-	_ac += _gravedad;
+	calculateForces();
+	recalculateAC();
 	_vel = _vel + (_ac*t);
 	_vel = _vel * pow(damping , t);
 	_pose.p = _pose.p + (_vel * t);
@@ -58,7 +60,8 @@ void Particle::integrateSemiImplicitEuler(double t)
 
 void Particle::integrateVerlet(double t)
 {
-	_ac += _gravedad;
+	calculateForces();
+	recalculateAC();
 	if (initialCalc)
 	{
 		lastPoseVerlet = _pose;
@@ -76,6 +79,21 @@ void Particle::update(float dt)
 {
 	if (_canReduceSize) resize();
 	_tVidaAct -= dt;
+}
+
+void Particle::calculateForces()
+{
+	_acumuladorF = { 0,0,0 };
+	for (auto force : _FuerzasAplicadas)
+	{
+		_acumuladorF += force->getGeneratorF();
+	}
+}
+
+void Particle::recalculateAC()
+{
+	_ac = { 0,0,0 };
+	_ac += _acumuladorF * _w;
 }
 
 void Particle::resize()

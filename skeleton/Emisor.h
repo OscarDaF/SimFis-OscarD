@@ -1,9 +1,11 @@
 #pragma once
 
-#include "Vector3D.h"
-#include <random>
-#include "Particle.h"
 #include <iostream>
+#include <random>
+
+#include "Vector3D.h"
+#include "Particle.h"
+#include "GeneradorFuerza.h"
 
 class Emisor
 {
@@ -34,6 +36,8 @@ protected:
 	};
 	ConoDistribucion _emCono;
 	
+	std::vector<GeneradorFuerza*> _emFuerzasAplicadas;
+
 	//ATRIBUTOS PARTICULAS
 
 	float _generaltV;
@@ -83,6 +87,10 @@ public:
 	
 	//METODOS GENERACIÓN PARTÍCULA
 	Particle* generarParticula();
+
+	//ASIGNACION DE GENERADORES DE FUERZAS QUE AFECTARAN A LAS PARTICULAS
+
+	void attachGenerator(GeneradorFuerza* generador) { _emFuerzasAplicadas.push_back(generador); }
 
 	//Metodos para modificar el cono de generación
 	void setOriginConeRadius(float r);
