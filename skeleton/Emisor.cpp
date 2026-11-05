@@ -128,4 +128,6 @@ float Emisor::distGaussiana()
 void Emisor::update(float dt)
 {
 	_currentTimer += dt;
+	for (auto f : _emFuerzasAplicadas)
+		f->update(dt);
 }

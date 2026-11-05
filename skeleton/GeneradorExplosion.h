@@ -16,6 +16,6 @@ public:
 		_center(cent), _K(K), _radioExplosion(radius), _cteTE(cteTE), _tExplosion(tInicial) {
 	};
 	Vector3D calculateForce(Particle* p, float dt) override;
-
+	void update(float dt) override;
 };
 

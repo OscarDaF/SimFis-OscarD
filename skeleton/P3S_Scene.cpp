@@ -24,7 +24,7 @@ void P3S_Scene::init()
 	emisor1->setOriginConeRadius(1.0);
 	emisor1->setTargetConeRadius(1.0);
 	GeneradorTorbellino* torbellino = new GeneradorTorbellino({ 0,5,0 }, 2);
-	GeneradorExplosion* explosion = new GeneradorExplosion({ 0,40,0 }, 3000, 20, 50, 0);
+	GeneradorExplosion* explosion = new GeneradorExplosion({ 0,40,0 }, 50000, 30, 4, 0);
 	emisor1->attachGenerator(explosion);
 
 	sistema->attachEmisor(emisor1);
