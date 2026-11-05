@@ -86,7 +86,7 @@ void Particle::calculateForces()
 	_acumuladorF = { 0,0,0 };
 	for (auto force : _FuerzasAplicadas)
 	{
-		_acumuladorF += force->getGeneratorF();
+		_acumuladorF += force->calculateForce(this);
 	}
 }
 

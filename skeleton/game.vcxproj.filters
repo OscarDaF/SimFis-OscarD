@@ -23,6 +23,7 @@
     <ClCompile Include="Chimenea.cpp" />
     <ClCompile Include="GeneradorGravedad.cpp" />
     <ClCompile Include="P3S_Scene.cpp" />
+    <ClCompile Include="GeneradorViento.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -49,6 +50,7 @@
     <ClInclude Include="GeneradorFuerza.h" />
     <ClInclude Include="GeneradorGravedad.h" />
     <ClInclude Include="P3S_Scene.h" />
+    <ClInclude Include="GeneradorViento.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

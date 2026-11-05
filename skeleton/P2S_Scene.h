@@ -23,8 +23,9 @@ public:
         }
     }
 
-    void cleanup() override {
-
+    void cleanup() override 
+    {
+        delete sistema;
     }
 
 private:

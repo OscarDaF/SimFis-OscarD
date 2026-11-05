@@ -40,6 +40,7 @@ protected:
 
 	//ATRIBUTOS PARTICULAS
 
+	float _massPart;
 	float _generaltV;
 	Particle::FORMA _formaParticulas;
 	float _particleSize;
@@ -53,6 +54,7 @@ public:
 		float tas, 
 		float v,
 		float tiempoVidaGen,
+		float massP,
 		Distribution dist = Distribution::UNIFORME,
 		Particle::FORMA formaPart = Particle::ESFERA,
 		float size = 1.0f,
@@ -65,6 +67,7 @@ public:
 		_tasaGeneracion(tas), 
 		_vel(v) , 
 		_generaltV(tiempoVidaGen),
+		_massPart(massP),
 		_emDistribucion(dist), 
 		_formaParticulas(formaPart),
 		_particleSize(size),

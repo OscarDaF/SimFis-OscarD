@@ -1,12 +1,14 @@
 #pragma once
 #include "Vector3D.h"
-
+class Particle;
 class GeneradorFuerza
 {
 protected:
-	Vector3D _force;
+	
 public:
 	GeneradorFuerza() {};
-	Vector3D getGeneratorF() { return _force; }
+	virtual Vector3D calculateForce(Particle* p) {
+		return { 0,0,0 };
+	}
 };
 

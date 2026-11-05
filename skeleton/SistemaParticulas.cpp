@@ -4,10 +4,6 @@ SistemaParticulas::SistemaParticulas()
 {
 }
 
-SistemaParticulas::SistemaParticulas(Vector3 pos, Vector3D dir)
-{
-}
-
 SistemaParticulas::~SistemaParticulas()
 {
 	for (auto& p : _particulas)

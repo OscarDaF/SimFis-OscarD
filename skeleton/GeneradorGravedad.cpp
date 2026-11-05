@@ -1,6 +1,7 @@
 #include "GeneradorGravedad.h"
+#include "Particle.h"
 
-GeneradorGravedad::GeneradorGravedad(Vector3D gravedad)
+Vector3D GeneradorGravedad::calculateForce(Particle* p)
 {
-	_force = gravedad;
+	return _gravedad;
 }
