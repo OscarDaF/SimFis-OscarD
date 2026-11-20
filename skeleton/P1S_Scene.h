@@ -6,7 +6,7 @@
 #include "Vector3D.h"
 #include "Particle.h"
 #include "Proyectil.h"
-
+#include "GeneradorGravedad.h"
 class P1S_Scene : public Scene {
 public:
     explicit P1S_Scene(std::string name) : Scene(std::move(name)) {}
@@ -25,7 +25,18 @@ public:
             Vector3 camPos = GetCamera()->getTransform().p;
             Vector3 camDir = GetCamera()->getDir().getNormalized();
             float vel = 200;
-            vProy.push_back(new Proyectil(camPos, camDir * vel, 10, { .0f , -9.8f , 0.0f }));
+            Proyectil* p = new Proyectil(camPos, camDir * vel, 1, { .0f , 0 , 0.0f } , 10 , Particle::CUBO , 1.0f , {1,1,1,1.0f},false);
+            p->addForceGen(g);
+            vProy.push_back(p);
+        }
+        else if (key == 'c' ||key == 'C')
+        {
+            Vector3 camPos = GetCamera()->getTransform().p;
+            Vector3 camDir = GetCamera()->getDir().getNormalized();
+            float vel = 30;
+            Proyectil* p = new Proyectil(camPos, camDir * vel, 1, { .0f , 0 , 0.0f }, 10, Particle::ESFERA, 1.0f, { 0,1,1,1.0f }, false);
+            p->addForceGen(g);
+            vProy.push_back(p);
         }
     }
 
@@ -46,7 +57,7 @@ public:
 private:
     physx::PxTransform m_transform;
     RenderItem* m_renderItem{ nullptr };
-    
+    GeneradorGravedad* g;
     std::vector<Proyectil*> vProy;
 };
 

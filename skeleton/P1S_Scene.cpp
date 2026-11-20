@@ -2,16 +2,7 @@
 
 void P1S_Scene::init()
 {
-    //// Ejemplo: Creación de una esfera usando las utilidades de render existentes
-    //physx::PxShape* shape = CreateShape(physx::PxSphereGeometry(2.0f));
-    //m_transform = physx::PxTransform(physx::PxVec3(0.0f, 10.0f, 0.0f));
-
-    //// Se registra el RenderItem exactamente como en la plantilla original
-    //m_renderItem = new RenderItem(shape, &m_transform, Vector4(1.0f, 0.0f, 0.0f, 1.0f));
-
-    //part = new Particle({1.0f,1.0f,1.0f} , {5.0f,.0f,.0f} , {.0f , -9.8f , 0.0f});
-    
-    
+    g = new GeneradorGravedad({ 0,-10,0 });
 }
 
 void P1S_Scene::update(double dt)

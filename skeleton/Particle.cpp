@@ -1,4 +1,5 @@
 #include "Particle.h"
+#include "GeneradorGravedad.h"
 #include <algorithm>
 Particle::Particle() : _pose({0,0,0}) , _vel({0,0,0}) , initialCalc(true) , _gravedad({0,0,0})
 {
@@ -64,6 +65,7 @@ void Particle::integrateVerlet(double t)
 	recalculateAC();
 	if (initialCalc)
 	{
+		initialCalc = false;
 		lastPoseVerlet = _pose;
 		integrateSemiImplicitEuler(t);
 	}
@@ -86,8 +88,10 @@ void Particle::calculateForces(float dt)
 	_acumuladorF = { 0,0,0 };
 	for (auto force : _FuerzasAplicadas)
 	{
-		if(force->getActive())
+		if (force->getActive())
+		{
 			_acumuladorF += force->calculateForce(this , dt);
+		}
 	}
 }
 

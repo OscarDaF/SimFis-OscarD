@@ -66,6 +66,7 @@ public:
 	void setColor(Vector4 color) { _color = color; }
 	void setSecColor(Vector4 color) { _secColor = color; }
 
+	void addForceGen(GeneradorFuerza* gen) { _FuerzasAplicadas.push_back(gen); }
 
 private:
 	void resize();

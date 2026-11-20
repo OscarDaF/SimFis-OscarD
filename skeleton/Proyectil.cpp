@@ -1,6 +1,8 @@
 #include "Proyectil.h"
 
-Proyectil::Proyectil(Vector3D pos, Vector3D velReal, float mReal, Vector3D gReal) : Particle() , _velReal(velReal) , _mReal(mReal) , _gravReal(gReal)
+Proyectil::Proyectil(Vector3D pos, Vector3D velReal, float mReal, Vector3D gReal) :
+	Particle(pos, (velReal* (1 / vSimple)), toSimulatedGravity(gReal), toSimulatedMass(mReal), 10, FORMA::ESFERA, 10.0f, {1,1,1,1}, false)
+, _velReal(velReal) , _mReal(mReal) , _gravReal(gReal)
 {
 	_pose = physx::PxTransform(pos);
 
@@ -12,11 +14,14 @@ Proyectil::Proyectil(Vector3D pos, Vector3D velReal, float mReal, Vector3D gReal
 }
 
 Proyectil::Proyectil(Vector3D Pos, Vector3D velReal, float mReal, Vector3D gReal, float tVida, FORMA shape, float size, Vector4 color, bool redSize):
-	Particle(Pos , (velReal * (1 / vSimple)) , toSimulatedGravity(gReal) , toSimulatedMass(mReal), tVida, shape, size, color, redSize),
+	Particle(Pos , {0,0,0}, toSimulatedGravity(gReal), toSimulatedMass(mReal), tVida, shape, size, color, redSize),
 	_velReal(velReal),
 	_mReal(mReal),
 	_gravReal(gReal)
 {
+	_vel = _velReal * (1 / vSimple);
+	_pose = physx::PxTransform(Pos);
+
 	_w = 1 / toSimulatedMass(_mReal);
 }
 

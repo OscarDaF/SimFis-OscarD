@@ -3,7 +3,7 @@ void PDEMO_Scene::init()
 {
 	Vector3D pos(0, 0, 0);
 	float radius = 50;
-	float mass = 1000;
+	float mass = 10e12 ;
 	
 	planetoideEjemplo = new Planetoide(pos, radius, mass);
 
