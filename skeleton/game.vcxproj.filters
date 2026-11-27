@@ -31,6 +31,8 @@
     <ClCompile Include="PDEMO_Scene.cpp" />
     <ClCompile Include="Planetoide.cpp" />
     <ClCompile Include="GeneradorGravitatorioReal.cpp" />
+    <ClCompile Include="P4S_Scene.cpp" />
+    <ClCompile Include="SpringForceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -65,6 +67,8 @@
     <ClInclude Include="PDEMO_Scene.h" />
     <ClInclude Include="Planetoide.h" />
     <ClInclude Include="GeneradorGravitatorioReal.h" />
+    <ClInclude Include="P4S_Scene.h" />
+    <ClInclude Include="SpringForceGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
